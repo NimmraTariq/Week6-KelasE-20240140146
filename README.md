@@ -3,7 +3,7 @@
 **Course:** PPAW — JavaScript DOM, Event Handling, and Fetch API  
 **Student:** Nimra Tariq  
 **NIM:** 20240140146  
-**Class:** Update this line with your actual class.
+**Class:** E.
 
 ## Project overview
 
@@ -22,7 +22,7 @@ A responsive web page demonstrating the Fetch API, JSON processing, DOM manipula
 ## Project structure
 
 ```text
-Week6-KelasA-20240140146/
+Week6-KelasE-20240140146/
 ├── index.html
 ├── style.css
 ├── script.js
