@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PPAW Week 6 project demonstrating Fetch API, DOM manipulation, and event handling.">
+  <title>Week 6 | Interactive Product Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="Interactive Product Hub home">
+      <span class="brand-mark">W6</span>
+      <span>Interactive<span class="brand-muted">Hub</span></span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="#products">Product catalog</a>
+      <a href="#feedback">Quick form</a>
+    </nav>
+    <span class="week-pill">PPAW · WEEK 6</span>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-dot"></span> JAVASCRIPT IN ACTION</p>
+        <h1>Small interactions.<br><span>Big possibilities.</span></h1>
+        <p class="hero-description">Explore live product data and try a simple interactive form — powered by JavaScript, the DOM, and the Fetch API.</p>
+        <a class="primary-link" href="#products">Explore products <span aria-hidden="true">↘</span></a>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="hero-glow"></div>
+        <div class="floating-card card-back"><span class="mini-label">LIVE DATA</span><div class="skeleton-line"></div><div class="skeleton-line short"></div><div class="skeleton-price">$—</div></div>
+        <div class="floating-card card-front"><span class="product-symbol">✳</span><span class="mini-label">YOUR NEXT FIND</span><strong>Discover<br>something good.</strong><span class="card-bottom">PRODUCTS, LOADED LIVE <span>↗</span></span></div>
+        <span class="spark spark-a">✦</span><span class="spark spark-b">✳</span>
+      </div>
+    </section>
+
+    <section class="stats-strip" aria-label="Project features">
+      <div><span class="stat-number">01</span><span><strong>Fetch API</strong><small>Live product data</small></span></div>
+      <div><span class="stat-number">02</span><span><strong>DOM</strong><small>Dynamic rendering</small></span></div>
+      <div><span class="stat-number">03</span><span><strong>Events</strong><small>Interactive form</small></span></div>
+    </section>
+
+    <section class="section products-section" id="products">
+      <div class="section-heading">
+        <div><p class="eyebrow">THE CATALOG</p><h2>Find your next favorite.</h2><p class="section-description">Product information is requested from DummyJSON and rendered directly on this page.</p></div>
+        <button class="outline-button" id="refresh-products" type="button"><span aria-hidden="true">↻</span> Refresh products</button>
+      </div>
+      <div class="catalog-toolbar">
+        <label class="search-box"><span aria-hidden="true">⌕</span><input id="product-search" type="search" placeholder="Search products..." aria-label="Search products"></label>
+        <span class="results-count" id="results-count">Preparing catalog…</span>
+      </div>
+      <div id="products-status" class="status-message" role="status" aria-live="polite">Loading products from DummyJSON…</div>
+      <div id="product-grid" class="product-grid" aria-live="polite"></div>
+    </section>
+
+    <section class="section form-section" id="feedback">
+      <div class="form-intro">
+        <p class="eyebrow">YOUR TURN</p>
+        <h2>Tell us what<br>you think.</h2>
+        <p>Try the form to see DOM manipulation and event handling in action. Your feedback appears instantly without reloading the page.</p>
+        <div class="form-note"><span>✓</span><span><strong>Built-in validation</strong><small>Check required fields and email format.</small></span></div>
+        <div class="form-note"><span>↗</span><span><strong>Instant response</strong><small>Submit and see your message below.</small></span></div>
+      </div>
+      <form class="feedback-card" id="feedback-form" novalidate>
+        <div class="form-card-heading"><span class="form-icon">✳</span><div><h3>Quick feedback</h3><p>All fields marked * are required.</p></div></div>
+        <div class="field-row">
+          <div class="field-group"><label for="full-name">Your name <span>*</span></label><input id="full-name" name="fullName" type="text" placeholder="e.g. Nimra" autocomplete="name" required minlength="2"><small class="field-error" id="name-error"></small></div>
+          <div class="field-group"><label for="email">Email address <span>*</span></label><input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required><small class="field-error" id="email-error"></small></div>
+        </div>
+        <div class="field-group"><label for="topic">What is this about? <span>*</span></label><select id="topic" name="topic" required><option value="">Choose a topic</option><option value="Product feedback">Product feedback</option><option value="Website experience">Website experience</option><option value="Suggestion">Suggestion</option><option value="Other">Other</option></select><small class="field-error" id="topic-error"></small></div>
+        <div class="field-group"><label for="message">Your message <span>*</span></label><textarea id="message" name="message" rows="4" placeholder="Share a thought or suggestion…" required minlength="10" maxlength="500"></textarea><div class="textarea-footer"><small class="field-error" id="message-error"></small><small id="character-count">0 / 500</small></div></div>
+        <button class="submit-button" type="submit">Send feedback <span aria-hidden="true">↗</span></button>
+        <div id="form-feedback" class="form-feedback" role="status" aria-live="polite" hidden></div>
+        <p class="privacy-note">Demo form · Your message is not sent to a server.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer"><a class="brand footer-brand" href="#"><span class="brand-mark">W6</span><span>Interactive<span class="brand-muted">Hub</span></span></a><p>Made for PPAW Week 6 · Fetch API, DOM & Event Handling</p><a href="#top" aria-label="Back to top">Back to top ↑</a></footer>
+</body>
+</html>
